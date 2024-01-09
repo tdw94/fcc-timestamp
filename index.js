@@ -25,7 +25,7 @@ const handleDate = (req, res) => {
   if (!date){
     dObj = new Date()
   } else {
-    dObj = new Date(date?.includes?.("-") ? date : parseInt(date));
+    dObj = new Date(date.match(/^\d+$/) ? parseInt(date) : date);
   }
   if (dObj?.toString() === "Invalid Date") {
     res.json({ error: "Invalid Date" });
